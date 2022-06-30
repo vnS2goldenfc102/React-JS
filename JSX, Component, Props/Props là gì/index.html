@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <!-- 
+            Props
+
+            - React elements
+                - Sử dụng props giống như attribute của thẻ 
+                - 2 props class, for => className, htmlFor
+                - Phải tuân theo quy ước có sẵn
+            - React components 
+                - Sử dụng props giống như đối số cho function
+                - Tự do đặt tên props
+                    - Đặt theo canelCase
+                    - Có thể bao gồm dấu gạch ngang
+            - Chú ý:
+                - Prop "key" là prop đặc biệt (chỉ khi sử dụng với array mới cần prop key)
+                - Props cơ bản là đối số của Component
+                   => Props có thể là bất cứ kiểu dữ liệu gì
+                - Sử dụng destructuring
+
+     -->
+
+
+
+
+    <div id="root"></div>
+    <script type="text/babel">
+        // postitem
+        function post_item({
+            image,
+            tiltle,
+            description,
+            callback = () => {},
+        }){
+            // if(typeof props.callback === 'function')
+            //     props.callback(Math.random())
+            callback()
+            return (
+                <div className="post_item">
+                    <img src={image} alt={tiltle} />
+                    <h2 className="post-tiltle">C#(.NET)-Tương tác đi</h2>
+                    <p className="post-desc">{description}</p>
+                    <p className="post-published"> Một ngày trước</p>
+                </div> 
+            )
+        }
+        // App.js
+        function App() { 
+            return (
+                <div className="posts-list">
+                    <post_item 
+                        title="C#(.NET)"
+                        image= "https://cdn.fullstack.edu.vn"
+                        description = "Bạn có kiến thức không ?"
+                        // Props có thể là bất cứ kiểu dữ liệu gì
+                        data={[{a:1}, {b:2}]}
+                        callback = {(random) =>{
+                            console.log('random: ', random);
+                        }
+                        
+                        }
+                    />
+                </div>
+            )
+        }
+        // class HelloMessage extends React.Component {
+        //     render() {
+        //         // return <div>Hello {this.props.name}</div>;
+        //         return (
+        //             React.createElement('div',null,"Hello ", this.props.name)
+        //         );
+        //     }
+        // }
+
+        // root.render(<HelloMessage name="Taylor" />);
+        ReactDOM.render(<App />, document.getElementbById('root'))
+    </script>
+</body>
+</html>

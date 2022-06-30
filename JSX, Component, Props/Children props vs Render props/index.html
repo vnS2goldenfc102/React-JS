@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <!-- 
+        Phần II 
+        - Props trong JSX 
+        <YourComponent
+            propsName1 = "String literals"   // Truyền chuỗi bình thường
+            propsName2 = {expression}  
+        />
+        - Props default to "true" 
+        - Spread/ Rest props
+        - Children prop
+            <YourComponent> String literal<YourComponent>
+            <YourComponent> {expression}<YourComponent>
+        - Render props : Truyền 1 function qua props
+        Chú ý : ôn lại callback, và spread ,rest
+        
+     -->
+     <div id="root"></div>
+     <script type="text/babel">
+        // 1
+        // function Button({title}){
+        //     return <button>{title}</button>
+        // }
+        
+        // // App.js
+        // function App() { 
+        //     return(
+        //         <div id="wrapper">
+        //             <Button title = "Click me!" />
+        //         </div>
+        //     )
+        // }
+        
+        // 2. Spread/ Rest props
+        // function Input({label, ...inputProps}){
+        //     return(
+        //         <div>
+        //             <label >{label}</label>
+        //             <input {...inputProps} />
+
+        //         </div>
+        //     )
+        // }
+        
+        // // App.js
+        // function App() { 
+        //     return(
+        //         <div id="wrapper">
+        //             <Input 
+        //                 label = "Full name"
+        //                 type="text"
+        //                 placeholder="Enter name..." 
+        //                 onFocus={() => {
+        //                     console.log(Math.random())
+        //                 }}
+        //             />
+        //         </div>
+        //     )
+        // }
+
+        // 
+        function List({data, children}) {
+            console.log(children)
+            return (
+                <ul>
+                   {data.map((item, index) => children(item, index))}
+                </ul>
+            )
+        }
+
+        
+
+        function App() {
+            const cars = ['BMW', 'Honda', 'Mazda']
+            return (
+                <div id= "wrapper">
+                    <List data = {cars}>
+                        {(item, index) => <li key={index}>{item}</li>}
+                     </List>
+                </div>
+            )
+        }
+        ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+</body>
+</html>

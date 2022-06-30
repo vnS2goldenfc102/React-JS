@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <!-- 
+        JSX -> Javascript XML
+
+        1. Luôn dùng React.createElement()? Vấn đề?
+        Nếu như có nhiều element 
+        NOTE : 
+
+        
+        2. JSX? Live demo
+        3. JSX khôgn phải HTML,
+            Cần có Javascript, Babel (dùng để phân tích chuyển đổi JSX thành JS )
+        4. JSX và React-Dom
+     -->
+
+     <script type="text/babel">
+         const reactCourse = 'React F8'
+         const courses = [
+             {
+                 name: 'HTML, CSS'
+             },
+             {
+                 name: 'Responsive web design'
+             },
+             {
+                 name: 'ReactJS'
+             }
+         ]
+
+        //  <!-- const ul = <ul className='courses-list'>
+        //         <li style={{color: 'red;' }}>JS</li>
+        //         <li>{reactCourse}</li>
+        //     </ul> -->
+            const ul = (
+                <ul>
+                    {courses.map(course =>
+                            <li>{course.name}</li>
+                        )}
+                </ul>
+            )
+            
+            ReactDOM.render(ul, document.getElementById('root'))
+
+            // <!-- 1 children có 2 element trở lên thì nó có kiểu dữ liệu mảng 
+            //     map() sẽ return lại có 1 mảng
+            // -->
+     </script>
+</body>
+</html>

@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="stylesheet" href="./assets/css/style.css">
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <div id="root"></div>
+    <script type="text/babel" >
+        // Component Item
+        const Item = ({href, onClick}) => {
+            let Component = 'button'
+            const props ={}
+
+            if(onClick){
+                props.onClick = onClick
+            }
+            if(href){
+                Component = 'a'
+                props.href = href
+            }
+            
+
+            return (
+                <Component {...props}>Click me</Component>
+            )
+        }
+        // App
+        function App () {
+            return (
+                <div className="wrapper">
+                    <Item 
+                        href = "https://fullstack.edu.vn/learning/reactjs?id=f106ce66-7cfa-4963-94ad-81e96945a576"
+                        onClick = {()=> console.log('Merry chịch mệt')}
+                    />
+                </div>
+            )
+        }
+        ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+</body>
+</html>

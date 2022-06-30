@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://unpkg.com/react@17/umd/react.development.js" crossorigin></script>
+    <script src="https://unpkg.com/react-dom@17/umd/react-dom.development.js" crossorigin></script>
+    <script src="https://unpkg.com/babel-standalone@6/babel.min.js"></script>
+</head>
+<body>
+    <!-- 
+       - boolean, undefined và null không được render
+    -->
+    <div id="root"></div>
+
+    <script type="text/babel">
+
+        // const Form = {
+        //     Input() {
+        //         return <input />
+        //     },
+        //     CheckBox() {
+        //         return <input type="checkbox" />
+        //     }
+        // }
+
+        // const type = 'Input'
+
+        // console.log(Form[type])
+        // const Component = Form[type]
+        // 2
+        // const Button = ({title, href, onClick}) => {
+        //     let Component = 'button'
+        //     const props = {}
+        //     // Nếu có onClick thì sẽ gán onClick vào 1 method mới trong props
+        //     if (onClick) {
+        //         props.onClick = onClick
+        //     } else {
+        //         Component = 'a'
+        //         props.href = href
+        //     }
+
+        //     return (
+        //         <Component {...props}>{title}</Component>
+        //     )
+        // }
+        
+        // // App.js
+        // function App() { 
+        //     return (
+        //         // <div className="wrapper">
+        //         //     <Component />
+        //         // </div>
+        //         <Button
+        //             title="Click me!"
+        //             href = "https://fullstack.edu.vn/"
+        //             // onClick={() => console.log(Math.random())}
+        //         />
+        //     )
+        // }
+        // react hỗ trợ khi là false sẽ không render ra cái gì hết
+        function App(){
+            // khi là false, undefined, null thì nó sẽ ko render
+            let firstAcess = 0
+            return (
+                <div id="wrapper">
+                      {firstAcess && <h1> Welcome to F8</h1> && <h2>Tao là siêu nhân đấy</h2>}  
+                </div>
+            )
+        }
+        ReactDOM.render(<App />, document.getElementById('root'))
+    </script>
+</body>
+</html>
